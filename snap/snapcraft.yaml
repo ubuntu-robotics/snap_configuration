@@ -8,6 +8,10 @@ description: |
 grade: devel
 confinement: strict
 
+hooks:
+  install:
+    plugs: [network]
+
 parts:
   teleop:
     plugin: colcon
@@ -19,6 +23,7 @@ parts:
   local-files:
     plugin: dump
     source: snap/local/
+    stage-packages: [curl]
     organize:
       '*.bash': bin/
 
@@ -29,3 +34,13 @@ apps:
     extensions: [ros2-humble]
     environment:
       "LD_LIBRARY_PATH": "$LD_LIBRARY_PATH:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/blas:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/lapack"
+
+  auto-update-config:
+    command: bin/download_config.bash
+    daemon: simple
+    timer: "00:00" # every day
+    plugs: [network]
+
+  update-config:
+    command: bin/download_config.bash
+    plugs: [network]

@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+$SNAP/bin/download_config.bash

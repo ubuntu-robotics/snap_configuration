@@ -1,0 +1,31 @@
+name: my-ros2-teleop-test
+base: core22
+version: '0.1'
+summary: ROS 2 teleop test snap
+description: |
+  ROS 2 teleop test snap getting configured
+
+grade: devel
+confinement: strict
+
+parts:
+  teleop:
+    plugin: colcon
+    source: https://github.com/ros-teleop/teleop_tools.git
+    stage-packages: [ros-humble-ros2run]
+    source-branch: master
+    source-subdir: key_teleop
+
+  local-files:
+    plugin: dump
+    source: snap/local/
+    organize:
+      '*.bash': bin/
+
+apps:
+  my-ros2-teleop-test:
+    command: bin/teleop_launcher.bash
+    plugs: [network, network-bind]
+    extensions: [ros2-humble]
+    environment:
+      "LD_LIBRARY_PATH": "$LD_LIBRARY_PATH:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/blas:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/lapack"

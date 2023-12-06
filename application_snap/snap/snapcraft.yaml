@@ -8,6 +8,11 @@ description: |
 grade: devel
 confinement: strict
 
+plugs:                                                     
+  configuration:                                           
+    interface: content
+    target: $SNAP/configuration
+
 parts:
   teleop:
     plugin: colcon
@@ -25,7 +30,7 @@ parts:
 apps:
   my-ros2-teleop-test:
     command: bin/teleop_launcher.bash
-    plugs: [network, network-bind]
+    plugs: [network, network-bind, configuration]
     extensions: [ros2-humble]
     environment:
       "LD_LIBRARY_PATH": "$LD_LIBRARY_PATH:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/blas:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/lapack"

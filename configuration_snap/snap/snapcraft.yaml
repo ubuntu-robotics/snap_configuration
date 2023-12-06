@@ -1,0 +1,24 @@
+name: my-configuration-snap
+base: core22
+version: '0.1'
+summary: A snap to configure them all
+description: |
+  This snap is sharing a configuration via content-sharing.
+  This way, my-ros2-teleop-test is getting configured.
+
+grade: devel
+confinement: strict
+
+slots:
+  configuration:
+    interface: content
+    source:
+      read: 
+        - $SNAP/etc
+
+parts:
+  configuration:
+    plugin: dump
+    source: snap/local/
+    organize:
+      '*.yaml': etc/

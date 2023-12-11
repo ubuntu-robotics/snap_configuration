@@ -31,5 +31,5 @@ apps:
     environment:
       "LD_LIBRARY_PATH": "$LD_LIBRARY_PATH:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/blas:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/lapack"
 
-  setup-overwritable-configuration:
-    command: bin/setup-overwritable-configuration.bash
+  reset-overwritable-configuration:
+    command: bin/reset-overwritable-configuration.bash

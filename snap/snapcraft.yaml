@@ -21,6 +21,7 @@ parts:
     source: snap/local/
     organize:
       '*.bash': bin/
+      '*.yaml': etc/
 
 apps:
   my-ros2-teleop-test:
@@ -29,3 +30,6 @@ apps:
     extensions: [ros2-humble]
     environment:
       "LD_LIBRARY_PATH": "$LD_LIBRARY_PATH:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/blas:$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/lapack"
+
+  setup-overwritable-configuration:
+    command: bin/setup-overwritable-configuration.bash

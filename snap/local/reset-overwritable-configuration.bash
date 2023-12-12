@@ -1,6 +1,6 @@
 #!/usr/bin/bash -e
 
-echo "Make sure to run this application with enough priviledge."
+echo "Make sure to run this application with enough privilege."
 
 cp $SNAP/etc/up-to-date-config.yaml $SNAP_COMMON/
 

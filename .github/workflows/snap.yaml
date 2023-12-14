@@ -1,7 +1,5 @@
 name: snap
 on:
-  schedule:
-    - cron: '0 0 1 * *'
   push:
     branches:
       - main
@@ -9,6 +7,7 @@ on:
     branches:
       - main
   workflow_dispatch:
+  workflow_call:
 
 jobs:
   build:

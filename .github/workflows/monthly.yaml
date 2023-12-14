@@ -6,4 +6,6 @@ on:
 
 jobs:
   main-snap:
-    uses: ubuntu-robotics/snap_configuration/.github/workflows/snap.yaml@ci/main_workflow_run
+    uses: ubuntu-robotics/snap_configuration/.github/workflows/snap.yaml@main
+  howto-pull-configuration-snap:
+    uses: ubuntu-robotics/snap_configuration/.github/workflows/snap.yaml@ci/pull_configuration_from_a_server

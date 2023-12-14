@@ -1,14 +1,12 @@
 name: snap
 on:
-  schedule:
-    - cron: '0 0 1 * *'
   push:
     branches:
       - howto/pull_configuration_from_a_server
   pull_request:
     branches:
       - howto/pull_configuration_from_a_server
-  workflow_dispatch:
+  workflow_call:
 
 jobs:
   build:
@@ -17,6 +15,8 @@ jobs:
       snap-file: ${{ steps.build-snap.outputs.snap }}
     steps:
     - uses: actions/checkout@v4
+      with:
+        ref: howto/pull_configuration_from_a_server
     - uses: snapcore/action-build@v1
       id: build-snap
 

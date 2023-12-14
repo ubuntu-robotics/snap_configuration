@@ -1,0 +1,17 @@
+name: snap
+on:
+  push:
+    branches:
+      - howto/overwritable_configuration
+  pull_request:
+    branches:
+      - howto/overwritable_configuration
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  snap:
+    uses: ubuntu-robotics/snap_workflows/.github/workflows/build-install-test-snap.yaml@main
+    with:
+      branch-name: howto/overwritable_configuration
+      snap-name: my-ros2-teleop-test

@@ -1,0 +1,46 @@
+name: snap
+on:
+  push:
+    branches:
+      - howto/content_sharing_configuration_snap
+  pull_request:
+    branches:
+      - howto/content_sharing_configuration_snap
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      application-snap-file: ${{ steps.build-application-snap.outputs.snap }}
+      configuration-snap-file: ${{ steps.build-configuration-snap.outputs.snap }}
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: howto/content_sharing_configuration_snap
+    - name: Build application snap
+      uses: snapcore/action-build@v1
+      id: build-application-snap
+      with:
+        path: application_snap
+    - name: Build configuration snap
+      uses: snapcore/action-build@v1
+      id: build-configuration-snap
+      with:
+        path: configuration_snap
+    # Make sure the application snap is installable
+    - name: Install and connect the snaps
+      run: |
+        sudo snap install ${{ steps.build-application-snap.outputs.snap }} --dangerous
+        sudo snap install ${{ steps.build-configuration-snap.outputs.snap }} --dangerous
+        sudo snap connect my-ros2-teleop-test:configuration my-configuration-snap:configuration
+    # Do some testing with the snap
+    - name: Testing
+      run: |
+        snap info my-ros2-teleop-test
+        snap info my-configuration-snap
+    - uses: actions/upload-artifact@v3
+      with:
+        name: configuration-and-application-snaps
+        path: .

@@ -1,0 +1,9 @@
+name: Scheduled
+on:
+  schedule:
+    - cron: '0 0 1 * *'
+  workflow_dispatch:
+
+jobs:
+  main-snap:
+    uses: ubuntu-robotics/snap_configuration/.github/workflows/snap.yaml@ci/main_workflow_run

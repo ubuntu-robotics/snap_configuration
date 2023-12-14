@@ -13,5 +13,5 @@ jobs:
   snap:
     uses: ubuntu-robotics/snap_workflows/.github/workflows/build-install-test-snap.yaml@main
     with:
-      branch-name: howto/pull_configuration_from_a_server
+      branch-name: howto/overwritable_configuration
       snap-name: my-ros2-teleop-test

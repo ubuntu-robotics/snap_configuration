@@ -1,5 +1,4 @@
 key_teleop:
   ros__parameters:
     forward_rate : 1.234
-    backward_rate: 0.5
-    rotation_rate: 1.0
+

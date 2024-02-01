@@ -14,3 +14,4 @@ jobs:
     with:
       branch-name: howto/pull_configuration_from_a_server
       snap-name: my-ros2-teleop-test
+      snap-install-args: --dangerous

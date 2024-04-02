@@ -15,8 +15,6 @@ jobs:
       branch-name: "howto/pull_configuration_from_a_server"
   howto-content-configuration-snap:
     uses: ubuntu-robotics/snap_configuration/.github/workflows/snap.yaml@howto/content_sharing_configuration_snap
-    with:
-      branch-name: "howto/content_sharing_configuration_snap"
   howto-overwritable-configuration-snap:
     uses: ubuntu-robotics/snap_configuration/.github/workflows/snap.yaml@howto/overwritable_configuration
     with:

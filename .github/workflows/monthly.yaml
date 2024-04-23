@@ -7,9 +7,15 @@ on:
 jobs:
   main-snap:
     uses: ubuntu-robotics/snap_configuration/.github/workflows/snap.yaml@main
+    with:
+      branch-name: "main"
   howto-pull-configuration-snap:
     uses: ubuntu-robotics/snap_configuration/.github/workflows/snap.yaml@howto/pull_configuration_from_a_server
+    with:
+      branch-name: "howto/pull_configuration_from_a_server"
   howto-content-configuration-snap:
     uses: ubuntu-robotics/snap_configuration/.github/workflows/snap.yaml@howto/content_sharing_configuration_snap
   howto-overwritable-configuration-snap:
     uses: ubuntu-robotics/snap_configuration/.github/workflows/snap.yaml@howto/overwritable_configuration
+    with:
+      branch-name: "howto/overwritable_configuration"

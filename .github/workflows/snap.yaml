@@ -8,11 +8,15 @@ on:
       - main
   workflow_dispatch:
   workflow_call:
+    inputs:
+       branch-name:
+         required: false
+         type: string
+         default: ''
 
 jobs:
   main-snap:
-    uses: ubuntu-robotics/snap_workflows/.github/workflows/build-install-test-snap.yaml@main
+    uses: ubuntu-robotics/snap_workflows/.github/workflows/snap.yaml@main
     with:
-      branch-name: main
+      branch-name: ${{ inputs.branch-name == '' && github.ref || inputs.branch-name }}
       snap-name: my-ros2-teleop-test
-      snap-install-args: --dangerous

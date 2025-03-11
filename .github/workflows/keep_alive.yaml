@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  keep_alive:
+  keep-alive:
     uses: canonical/robotics-actions-workflows/.github/workflows/keepalive.yaml@main
     with:
       workflow_files: "./monthly.yaml"
